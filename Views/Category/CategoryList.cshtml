@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Crud_Operation.Models.Category>
+@{
+    ViewBag.Title = "CategoryList";
+    @ViewBag.namefirst
+}
+
+<h2>CategoryList</h2>
+
+<button type="button" class="btn btn-light"> @Html.ActionLink("Report", "CreateReport", "Report", null, new { style = "text-decoration: none;" })</button>
+
+<p>
+    @if (User.IsInRole("admin"))
+    {
+        @Html.ActionLink("Create New", "CreateCategory")
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.CategoryName)
+            </td>
+            <td>
+                @Html.ActionLink("Activate", "Activate", new { id = item.CategoryId })
+                @Html.ActionLink("Deactivate", "Deactivate", new { id = item.CategoryId })
+            <td>
+                @if (item.IsActive)
+                {
+                    @Html.ActionLink("ListOfProduct", "ProductList", new { id = item.CategoryId })
+
+                    <span>&nbsp;</span>
+                    if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("EditCategory", "EditCategory", new { id = item.CategoryId })
+                    }
+                    <span>&nbsp;</span>
+                    if (User.IsInRole("admin"))
+                    {
+                        @Html.ActionLink("DeleteCategory", "DeleteCategory", new { id = item.CategoryId })
+                    }
+                }
+<td>
+            </td>
+        </tr>
+    }
+</table>

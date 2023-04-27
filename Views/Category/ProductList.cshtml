@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Crud_Operation.Models.Product>
+
+@{
+    ViewBag.Title = "ProductList";
+}
+
+<h2>ProductList</h2>
+
+<p>
+    @if (User.IsInRole("admin"))
+    {
+        @Html.ActionLink("Create New", "CreateProduct", new { id = ViewBag.Id })
+    }
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+    </tr>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditProduct", new { id=item.ProductId }) |
+            @Html.ActionLink("Details", "ProductDetails", new { id=item.ProductId }) |
+            @Html.ActionLink("Delete", "DeleteProduct", new { id=item.ProductId })
+        </td>
+    </tr>
+}
+</table>

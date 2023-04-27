@@ -1,0 +1,38 @@
+﻿
+@using CategoryNewProject.Models
+@model IEnumerable<ReportView>
+@{
+    ViewBag.Title = "CreateReport";
+}
+
+<h2>Report Page </h2>
+<table class="table">
+
+    <tr>
+        <th>
+            Category Name
+        </th>
+        <th>
+            Product Name
+        </th>
+        <th>
+            Created By
+        </th>
+    </tr>
+
+    @foreach (var result in Model)
+    {
+
+        <tr>
+            <td>
+                @result.CategoryName
+            </td>
+            <td>
+                @result.ProductName
+            </td>
+            <td>
+                @result.CreatedBy
+            </td>
+        </tr>
+    }
+</table>

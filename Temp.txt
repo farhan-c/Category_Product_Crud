@@ -1,0 +1,86 @@
+﻿DECLARE @myVar INT;
+SET @myVar = 10;
+
+CREATE TABLE globals (myVar INT);
+INSERT INTO globals VALUES (10);
+
+SELECT myVar FROM globals;
+
+
+SELECT * FROM customers
+WHERE country = 'USA';
+
+SELECT customer_id, 
+SUM(order_amount) as total_amount 
+FROM orders
+GROUP BY customer_id 
+HAVING total_amount > 1000;
+
+string a="Hello";
+string b = a??"Default";
+
+var numbers = new int[] { 1, 2, 3, 4, 5 };
+
+var firstOrDefaultResult = numbers.FirstOrDefault(); // returns 1
+var singleOrDefaultResult = numbers.SingleOrDefault(); // throws an exception, since the sequence contains more than one element
+
+var emptySequence = new int[] { };
+
+var firstOrDefaultResultEmpty = emptySequence.FirstOrDefault(); // returns 0
+var singleOrDefaultResultEmpty = emptySequence.SingleOrDefault(); // returns 0, since the sequence is empty
+
+class MyClass {
+    public void DoSomething() {
+        // Method implementation
+    }
+}
+MyClass myObj = new MyClass();
+myObj.DoSomething();
+
+public static class StringExtensions
+{
+    public static string Reverse(this string input)
+    {
+        char[] chars = input.ToCharArray();
+        Array.Reverse(chars);
+        return new string(chars);
+    }
+}
+
+WITH TopEmployees AS (
+   SELECT EmployeeID, FirstName, LastName, Salary
+   FROM Employee
+   ORDER BY Salary DESC
+   LIMIT 10
+)
+SELECT * FROM TopEmployees;
+
+SELECT * FROM TopEmployees;
+
+public struct Person
+{
+    public string Name;
+    public int Age;
+
+    // Parameterless constructor
+    public Person()
+    {
+        Name = "";
+        Age = 0;
+    }
+
+    // Constructor with parameters
+    public Person(string name, int age)
+    {
+        Name = name;
+        Age = age;
+    }
+}
+
+
+
+
+
+
+
+
